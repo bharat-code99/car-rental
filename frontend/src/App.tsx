@@ -7,23 +7,22 @@ import Cars from "./pages/Cars";
 import MyBookings from "./pages/MyBookings";
 import Footer from "./components/Footer";
 
-export default function App(){
+export default function App() {
+  const [_, setShowLogin] = useState(false);
+  const isOwnerPath = useLocation().pathname.startsWith("/owner");
 
-  const [showLogin, setShowLogin] = useState(false);
-  const isOwnerPath = useLocation().pathname.startsWith('/owner');
-
-  return(
+  return (
     <>
-      {!isOwnerPath && <Navbar setShowLogin={setShowLogin}/>}
+      {!isOwnerPath && <Navbar setShowLogin={setShowLogin} />}
 
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/car-details/:id" element={<CarDetails/>}/>
-        <Route path="/cars" element={<Cars/>}/>
-        <Route path="/my-bookings" element={<MyBookings/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/car-details/:id" element={<CarDetails />} />
+        <Route path="/cars" element={<Cars />} />
+        <Route path="/my-bookings" element={<MyBookings />} />
       </Routes>
 
       {!isOwnerPath && <Footer />}
     </>
-  )
+  );
 }
