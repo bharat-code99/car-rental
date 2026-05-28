@@ -48,7 +48,6 @@ const defalutBookingData = [
 
 export default function MyBookings() {
   const [bookings, setBookings] = useState<BookingData[]>(defalutBookingData);
-  const currency = import.meta.env.VITE_CURRENCY;
   const fetchMyBookings = () => {
     setBookings(dummyMyBookingsData);
   };
@@ -127,8 +126,7 @@ export default function MyBookings() {
               <div className="text-sm text-gray-500 text-right">
                 <p>Total Price</p>
                 <h1 className="text-2xl font-semibold text-primary">
-                  {currency}
-                  {booking.price}
+                  ₹{booking.price}
                 </h1>
                 <p>Booked On {booking.createdAt.split("T")[0]}</p>
               </div>

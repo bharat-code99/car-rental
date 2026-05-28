@@ -25,7 +25,6 @@ export default function CarDetails() {
   const [car, setCar] = useState<Car | undefined>();
   const { id } = useParams();
   const navigate = useNavigate();
-  const currency = import.meta.env.VITE_CURRENCY;
 
   useEffect(() => {
     setCar(dummyCarData.find((car) => car._id === id));
@@ -115,8 +114,7 @@ export default function CarDetails() {
           className="shadow-lg h-max sticky top-18 rounded-xl p-6 space-y-6 text-gray-500"
         >
           <p className="flex items-center justify-between text-2xl text-gray-800 font-semibold">
-            {currency}
-            {car.pricePerDay}{" "}
+            ₹{car.pricePerDay}{" "}
             <span className="text-base text-gray-400 font-normal">
               per day
             </span>{" "}

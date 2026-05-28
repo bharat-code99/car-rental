@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { Route, Routes, useLocation } from "react-router";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
+import Login from "./components/Login";
 
 const Home = lazy(() => import("./pages/Home"));
 const CarDetails = lazy(() => import("./pages/CarDetails"));
@@ -15,11 +16,12 @@ const ManageBookings = lazy(() => import("./pages/owner/ManageBookings"));
 const AddCar = lazy(() => import("./pages/owner/AddCar"));
 
 export default function App() {
-  const [_, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const isOwnerPath = useLocation().pathname.startsWith("/owner");
 
   return (
     <>
+      {showLogin && <Login setShowLogin={setShowLogin}/>}
       {!isOwnerPath && <Navbar setShowLogin={setShowLogin} />}
 
       <Suspense fallback={<Loader />}>
